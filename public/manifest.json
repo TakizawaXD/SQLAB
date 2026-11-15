@@ -1,0 +1,25 @@
+{
+  "name": "SQL LAB — Laboratorio Interactivo de Bases de Datos",
+  "short_name": "SQL LAB",
+  "description": "Laboratorio interactivo para aprender, practicar y experimentar con bases de datos PostgreSQL directamente desde el navegador.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F19",
+  "theme_color": "#0B0F19",
+  "orientation": "any",
+  "categories": ["education", "developer", "productivity"],
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

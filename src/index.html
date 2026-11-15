@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="es" class="dark">
+  <head>
+    <meta charset="utf-8" />
+    <!-- Desactivar Caché para sincronización en tiempo real con Firebase Console -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <title>SQL LAB — Laboratorio Interactivo de Bases de Datos | Aprende. Ejecuta. Construye.</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="SQL LAB — Laboratorio Interactivo de Bases de Datos" />
+    <meta name="description" content="Aprende, practica y domina PostgreSQL directamente en tu navegador. 100% Client-Side con WebAssembly (PGlite), persistencia IndexedDB, editor Monaco, terminal Xterm y diagramas ER en tiempo real." />
+    <meta name="keywords" content="SQL, PostgreSQL, PGlite, WebAssembly, Database, Base de Datos, Monaco Editor, Xterm, Diagrama ER, IndexedDB, Aprender SQL, SQL Interactive Lab, SQL Tutorial" />
+    <meta name="author" content="Takizawa" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0B0F19" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- Open Graph / Facebook / LinkedIn / Discord -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sqllab.app/" />
+    <meta property="og:site_name" content="SQL LAB" />
+    <meta property="og:title" content="SQL LAB — Laboratorio Interactivo de Bases de Datos" />
+    <meta property="og:description" content="Tu laboratorio SQL en el navegador. Explora, practica y domina bases de datos PostgreSQL con motor real WebAssembly y persistencia local." />
+    <meta property="og:image" content="/banner.jpg" />
+    <meta property="og:image:secure_url" content="/banner.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="SQL LAB — Laboratorio Interactivo de Bases de Datos" />
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter / X Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://sqllab.app/" />
+    <meta name="twitter:title" content="SQL LAB — Laboratorio Interactivo de Bases de Datos" />
+    <meta name="twitter:description" content="Aprende. Ejecuta. Construye. Motor PostgreSQL 16 WebAssembly en tu navegador, sin backend y 100% privado." />
+    <meta name="twitter:image" content="/banner.jpg" />
+    <meta name="twitter:image:alt" content="SQL LAB — Laboratorio Interactivo de Bases de Datos" />
+
+    <!-- PWA & Mobile Capabilities -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="SQL LAB" />
+
+    <!-- Favicons & Icons -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="favicon.svg" />
+
+    <!-- Typography Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+      function reportError(title, err) {
+        console.error(title, err);
+        var el = document.getElementById('app-loading-msg');
+        if (el) {
+          var details = (err && (err.stack || err.message || err.reason)) || String(err);
+          el.innerHTML = '<div style="color:#f87171;font-weight:bold;margin-bottom:6px;">⚠️ ' + title + '</div>' +
+            '<div style="color:#fca5a5;font-size:11px;font-family:monospace;background:#1e1b4b;padding:8px;border-radius:6px;max-width:600px;text-align:left;overflow:auto;max-height:180px;white-space:pre-wrap;border:1px solid #7f1d1d;">' + details + '</div>' +
+            '<button onclick="localStorage.clear();sessionStorage.clear();location.reload();" style="margin-top:10px;padding:6px 14px;background:#7c3aed;color:#fff;font-weight:600;border:none;border-radius:6px;cursor:pointer;font-size:11px;">Limpiar y Recargar</button>';
+        }
+      }
+      window.addEventListener('error', function(e) {
+        var target = e && e.target;
+        if (target && target !== window && target.tagName !== 'SCRIPT') return;
+        var resourceUrl = target && target.src;
+        reportError('Error de ejecución en el navegador', e.error || e.message || (resourceUrl ? 'No se pudo cargar el script: ' + resourceUrl : 'Error de carga desconocido'));
+      }, true);
+      window.addEventListener('unhandledrejection', function(e) {
+        reportError('Fallo en inicialización asíncrona', e.reason);
+      });
+      setTimeout(function() {
+        if (!window.__SQLAB_BOOTED__ && document.getElementById('app-loading-msg')) {
+          reportError(
+            'La aplicación está tardando en cargar',
+            'Comprueba tu conexión y recarga la página. Si el problema persiste, usa Limpiar y Recargar.'
+          );
+        }
+      }, 20000);
+    </script>
+  </head>
+  <body class="bg-slate-950 text-slate-100 antialiased selection:bg-purple-600 selection:text-white overflow-hidden select-none">
+    <app-root>
+      <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;width:100vw;background:#0B0F19;color:#e2e8f0;font-family:system-ui,-apple-system,sans-serif;">
+        <div style="width:48px;height:48px;margin-bottom:16px;">
+          <svg viewBox="0 0 128 128" width="48" height="48">
+            <rect width="128" height="128" rx="28" fill="#1e1b4b"/>
+            <circle cx="64" cy="64" r="32" fill="none" stroke="#a855f7" stroke-width="8" stroke-dasharray="100" stroke-dashoffset="30">
+              <animateTransform attributeName="transform" type="rotate" from="0 64 64" to="360 64 64" dur="1s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <div style="font-size:20px;font-weight:800;letter-spacing:1px;background:linear-gradient(to right, #fff, #c084fc);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;margin-bottom:2px;">SQL LAB</div>
+        <div style="font-size:11px;color:#c084fc;margin-bottom:8px;font-weight:600;letter-spacing:0.5px;">por Takizawa</div>
+        <div id="app-loading-msg" style="font-size:12px;color:#94a3b8;text-align:center;max-width:320px;">Cargando motor de base de datos...</div>
+      </div>
+    </app-root>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+{
+    "name": "sqllab",
+    "version": "2.0.0",
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve --port 4200",
+        "build": "ng build",
+        "watch": "ng build --watch --configuration development",
+        "test": "ng test --watch=false"
+    },
+    "private": true,
+    "packageManager": "npm@11.17.0",
+    "dependencies": {
+        "@angular/common": "^22.2.0",
+        "@angular/compiler": "^22.2.0",
+        "@angular/core": "^22.2.0",
+        "@angular/forms": "^22.2.0",
+        "@angular/platform-browser": "^22.2.0",
+        "@angular/router": "^22.2.0",
+        "@electric-sql/pglite": "^0.5.16",
+        "@tailwindcss/postcss": "^4.3.5",
+        "@xterm/addon-fit": "^0.11.0",
+        "@xterm/xterm": "^6.0.0",
+        "monaco-editor": "^0.57.0",
+        "postcss": "^8.5.33",
+        "rxjs": "~7.8.0",
+        "sql-formatter": "^15.6.6",
+        "tailwindcss": "^4.3.5",
+        "tslib": "^2.3.0"
+    },
+    "devDependencies": {
+        "@angular/build": "^22.2.4",
+        "@angular/cli": "^22.2.4",
+        "@angular/compiler-cli": "^22.2.0",
+        "fake-indexeddb": "^6.2.8",
+        "jsdom": "^30.0.0",
+        "prettier": "^3.8.1",
+        "typescript": "~6.0.2",
+        "vite": "^8.3.8",
+        "vitest": "^5.1.0"
+    }
+}

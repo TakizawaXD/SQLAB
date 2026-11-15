@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Radial Glow -->
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.35"/>
+      <stop offset="60%" stop-color="#6366f1" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#0b0f19" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Cylinder Top Gradient -->
+    <linearGradient id="cylinder-top" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+
+    <!-- Cylinder Body Gradient -->
+    <linearGradient id="cylinder-body" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4c1d95"/>
+      <stop offset="25%" stop-color="#7c3aed"/>
+      <stop offset="70%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+
+    <!-- Electric Cyan Accent -->
+    <linearGradient id="cyan-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="neon-glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Ambient Glow -->
+  <circle cx="256" cy="256" r="230" fill="url(#bg-glow)"/>
+
+  <!-- Orbital Data Ring -->
+  <ellipse cx="256" cy="256" rx="210" ry="85" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="14 10" opacity="0.45" transform="rotate(-18 256 256)"/>
+  <circle cx="95" cy="205" r="5" fill="#38bdf8" filter="url(#neon-glow)"/>
+  <circle cx="417" cy="307" r="6" fill="#a855f7" filter="url(#neon-glow)"/>
+
+  <!-- Disc 3 (Bottom Layer) -->
+  <g>
+    <path d="M 126 310 C 126 350, 386 350, 386 310 L 386 350 C 386 390, 126 390, 126 350 Z" fill="url(#cylinder-body)"/>
+    <ellipse cx="256" cy="310" rx="130" ry="40" fill="#431407" opacity="0"/>
+    <!-- Rim Light -->
+    <path d="M 126 350 C 126 390, 386 390, 386 350" fill="none" stroke="url(#cyan-accent)" stroke-width="3" filter="url(#neon-glow)"/>
+  </g>
+
+  <!-- Disc 2 (Middle Layer) -->
+  <g>
+    <path d="M 126 230 C 126 270, 386 270, 386 230 L 386 270 C 386 310, 126 310, 126 270 Z" fill="url(#cylinder-body)"/>
+    <!-- Rim Light -->
+    <path d="M 126 270 C 126 310, 386 310, 386 270" fill="none" stroke="#a855f7" stroke-width="3" opacity="0.8"/>
+  </g>
+
+  <!-- Disc 1 (Top Layer & Lid) -->
+  <g>
+    <path d="M 126 150 C 126 190, 386 190, 386 150 L 386 190 C 386 230, 126 230, 126 190 Z" fill="url(#cylinder-body)"/>
+    <!-- Lid Ellipse -->
+    <ellipse cx="256" cy="150" rx="130" ry="42" fill="url(#cylinder-top)"/>
+    <!-- Inner Core Inset -->
+    <ellipse cx="256" cy="150" rx="90" ry="28" fill="#1e1b4b" stroke="#38bdf8" stroke-width="2" opacity="0.8"/>
+    
+    <!-- Code / Spark Glyph on Top -->
+    <path d="M 235 142 L 215 150 L 235 158" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 277 142 L 297 150 L 277 158" fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="262" y1="138" x2="250" y2="162" stroke="#a855f7" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+
+  <!-- Front Data Light Streaks -->
+  <path d="M 127 190 L 127 350" stroke="#a855f7" stroke-width="2" opacity="0.6"/>
+  <path d="M 385 190 L 385 350" stroke="#38bdf8" stroke-width="2" opacity="0.6"/>
+</svg>

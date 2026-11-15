@@ -1,0 +1,44 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+
+    // Espacio de trabajo de cada usuario en Firebase Console
+    match /users/{userId}/{document=**} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // Colecciones globales de SQL LAB en Firebase Console
+    match /sqllab_databases/{dbId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /sqllab_history/{historyId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /sqllab_tabs/{tabId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /sqllab_backups/{backupId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /sqllab_settings/{settingId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    match /{document=**} {
+      allow read, write: if isAuthenticated();
+    }
+  }
+}
